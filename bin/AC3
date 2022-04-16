@@ -1,0 +1,111 @@
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
+public class AC3 <K,V> {
+	
+	public CSP<K, V> AC3() { // method of the 1st CSP: Canada Map Problem
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		LinkedList<String> domain1 = new LinkedList<>(); // initialize set of domains
+		LinkedList<String> domain2 = new LinkedList<>();
+		Set<Node2<String, LinkedList<String>>> node = new LinkedHashSet<>(); // initialize set of nodes
+		Set<Constraint<String, String>> constraint = new LinkedHashSet<>(); // initialize set of constraints
+		
+		// add all domains to the set
+		domain1.add("a");
+		domain1.add("b");
+		domain1.add("c");
+		domain2.add("a");
+		domain2.add("b");
+		
+		// add all variables to the set
+		node.add(new Node2("X1", domain1));
+		node.add(new Node2("X2", domain1));
+		node.add(new Node2("X3", domain2));
+		node.add(new Node2("X4", domain2));
+		node.add(new Node2("X5", domain2));
+		
+		// add all constraints to the set
+		constraint.add(new AC3Constraint("X1", "X3"));
+		constraint.add(new AC3Constraint("X2", "X3"));
+		constraint.add(new AC3Constraint("X4", "X3"));
+		constraint.add(new AC3Constraint("X5", "X3"));
+		constraint.add(new AC3Constraint("X4", "X5"));
+		
+		return new CSP(node, constraint);
+	}
+	
+
+	
+	static boolean revise(Node2<String,String> node1, Node2<String,String> node2) {
+		boolean revised = false;
+		boolean e = false;
+		
+		for(String element: node1.getDomain()) {
+			if node2.
+		}		
+		return revised;
+	}
+	
+//	static void generateArc(CSP<Integer> csp) {
+//		for(int i = 0; i < csp.node.size(); i++) {
+//			for(int j = i + 1; j < csp.node.size(); j++) {
+//				arc.add(new Arc<Integer>( csp.node.get(i), csp.node.get(j) ) );
+//			}
+//		}
+//	}
+	
+	static boolean AC3(CSP<Integer> csp) {
+		generateArc(csp);
+		
+		while(arc.isEmpty() == false) {
+			Arc<Integer> a = arc.remove();
+			
+			if(revise(a.V1.Domain, a.V2.Domain)){
+				if(a.V1.Domain.isEmpty()) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
+//		 static boolean AC_3(Node<String,String> node1, Node<String,String> node2) {
+//		 Set queue = new LinkedList<>(); 
+//		 while (!queue.isEmpty()) {
+//		 <i,j> = queue.removeFirst();
+//		 if (revise(int[] X,int []Y)) {
+//		 if (DX.size()==0) {
+//		 return false;
+//		 }
+//		 foreach k in neighbors(i) {
+//		 queue.add
+//		 }
+//		 	}
+//		 }
+//		 return true;
+//		}
+//	
+//	     static boolean revise(Node<String,String> node1, Node<String,String> node2) {
+//		 boolean changed = false;
+//		 
+//		 for (int i = 0; i < node1.getDomain().size(); i++ ){
+//		 boolean ok = false;
+//		 for(int j = 0; j < node2.getDomain().size(); j++ ) {
+//		 if (V1.get(i)==V2.get(j)) {
+//		 ok = true;
+//		 }
+//		 }
+//		 if (!ok) {
+//		 V1.remove(i);
+//		 changed = true;
+//		 }
+//		 }
+//		 return changed;
+//	
+//		
+//
+//		}
+}
